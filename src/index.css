@@ -2,13 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-body, input, text-area, button{
-    font-family:'inter', sans-serif;
-    font-weight: 400;
-    font-size: 1rem;
+body,
+input,
+text-area,
+button {
+  font-family: "inter", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
 }
-body{
-    background-color:#1E1E1E;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+body {
+  background-color: #1e1e1e;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
 }
