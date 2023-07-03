@@ -3,7 +3,12 @@ import Cards from "../../components/Cards";
 import Empty from "../../components/Empty";
 
 export default function Home() {
-  const initialComments: Comment = [
+  interface CommentContent {
+    id: number;
+    text: string;
+    concluido: boolean;
+  }
+  const initialComments: CommentContent[] = [
     {
       id: 1,
       text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita neque delectus voluptas nobis, odio aliquam. Sint rerum eum, magni repellat deleniti minima voluptate sit, error earum at assumenda reiciendis provident.",
@@ -23,7 +28,7 @@ export default function Home() {
 
   const [comments, setComments] = useState(initialComments)
 
-  
+
 
   return (
     <main className="flex flex-1 flex-col w-1/2 mx-auto">
@@ -38,9 +43,10 @@ export default function Home() {
         </div>
       </div>
       {comments.length !== 0 ? (
-        
-        <Cards />
-      ): (
+        initialComments.map(comment => {
+          return <Cards id={comment.id} text={comment.text} concluido={comment.concluido} key={comment.id} />;
+        })
+      ) : (
         <Empty />
       )}
     </main>
