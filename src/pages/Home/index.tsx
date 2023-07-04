@@ -41,7 +41,7 @@ export default function Home() {
           </div>
           <div className="flex items-center justify-between gap-2 text-sm">
             <span className="text-blue-light font-bold">Concluidas</span>
-            <span className="text-gray-200 bg-gray-400 py-1 px-2 rounded-full ">{concluidas}</span>
+            <span className="text-gray-200 bg-gray-400 py-1 px-2 rounded-full ">{}</span>
           </div>
         </div>
         {tasks.length !== 0 ? (

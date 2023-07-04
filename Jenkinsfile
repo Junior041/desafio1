@@ -1,25 +1,36 @@
 pipeline {
+     /*
+     agent {  
+        docker {
+            image 'node' 
+            args '-p 3000:3000' 
+        }  
+    }
+    */
     agent any
     stages {
-        stage('Checkout') {
+        stage('Build') { 
             steps {
-                checkout scm
+                echo "building states"
+                sh 'node -v' 
+                sh 'npm install' 
+                
             }
-        }
-        stage('Install Dependencies') {
+        } 
+         stage('Deploy') { 
             steps {
-                sh 'npm install'
-            }
-        }
-        stage('Build') {
-            steps {
-                sh 'npm run build'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                sh 'serve -s build' // Inicia a aplicação React a partir da pasta 'build'
+                echo "Deploying..."
+               
             }
         }
     }
+     post{
+          always{
+               echo "pipeline concluded."
+          }
+          success{
+               echo "all stages executed with success."
+               sh 'npm start'
+          }
+     }
 }
