@@ -1,36 +1,30 @@
 pipeline {
-     /*
-     agent {  
-        docker {
-            image 'node' 
-            args '-p 3000:3000' 
-        }  
-    }
-    */
     agent any
     stages {
-        stage('Build') { 
+        stage('Build') {
             steps {
-                echo "building states"
-                sh 'node -v' 
-                sh 'yarn' 
-                
+                echo "Building..."
+                sh 'node -v'
+                sh 'yarn'
             }
-        } 
-         stage('Deploy') { 
+        }
+        stage('Deploy') {
             steps {
                 echo "Deploying..."
-               sh 'yarn build'
+                sh 'yarn build'
             }
         }
     }
-     post{
-          always{
-               echo "pipeline concluded."
-          }
-          success{
-               echo "all stages executed with success."
-               sh 'yarn start'
-          }
-     }
+    post {
+        always {
+            echo "Pipeline concluded."
+        }
+        success {
+            echo "All stages executed with success."
+            script {
+                sh 'pm2 delete app1 || true'
+                sh 'pm2 start ecosystem.config.js'
+            }
+        }
+    }
 }
