@@ -8,12 +8,12 @@ pipeline {
         }
         stage('Install Dependencies') {
             steps {
-                sh 'npm i'
+                sh 'npm install'
             }
         }
         stage('Build') {
             steps {
-                sh 'npm build'
+                sh 'npm run build'
             }
         }
         stage('Deploy') {
