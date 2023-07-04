@@ -5,9 +5,10 @@ interface BuscaProps {
   newTaskFunction: (event: FormEvent<HTMLFormElement>) => void;
   newTaskChange: (event: ChangeEvent<HTMLInputElement>) => void;
   invalidNewComment: (event: InvalidEvent<HTMLInputElement>) => void;
+  newTask : string
 }
 
-export default function Busca({ newTaskFunction, newTaskChange, invalidNewComment }: BuscaProps) {
+export default function Busca({ newTaskFunction, newTaskChange, invalidNewComment, newTask }: BuscaProps) {
 
   return (
     <div className="flex items-center flex-row mx-auto justify-center relative -top-7">
@@ -16,6 +17,7 @@ export default function Busca({ newTaskFunction, newTaskChange, invalidNewCommen
           type="text"
           name="task"
           id="task"
+          value={newTask}
           onChange={newTaskChange}
           onInvalid={invalidNewComment}
           required
