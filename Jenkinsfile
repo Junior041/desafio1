@@ -8,12 +8,12 @@ pipeline {
         }
         stage('Install Dependencies') {
             steps {
-                sh 'yarn'
+                sh 'npm i'
             }
         }
         stage('Build') {
             steps {
-                sh 'yarn build'
+                sh 'npm build'
             }
         }
         stage('Deploy') {
