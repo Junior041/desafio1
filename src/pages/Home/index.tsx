@@ -48,6 +48,11 @@ export default function Home() {
     setCountOk(completedTasksCount)
   }, [tasks]);
 
+  function handleRemoveComment(id: number) {
+    setTasks(tasks.filter((task) => {
+      return task.id !== id;
+    }));
+  }
 
   return (
     <>
@@ -66,7 +71,7 @@ export default function Home() {
         </div>
         {tasks.length !== 0 ? (
           tasks.map(task => {
-            return <Cards key={task.id} id={task.id} text={task.text} concluido={task.concluido} setOkComment={handleOkComment} />;
+            return <Cards key={task.id} id={task.id} text={task.text} concluido={task.concluido} setOkComment={handleOkComment} removeComment={handleRemoveComment} />;
           })
         ) : (
           <Empty />

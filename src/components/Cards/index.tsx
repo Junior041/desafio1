@@ -4,9 +4,10 @@ interface CardsProps {
     concluido: boolean;
     id: number;
     setOkComment: (id : number) => void
+    removeComment: (id : number) => void
 }
 
-export default function Cards({ text, concluido, id, setOkComment }: CardsProps) {
+export default function Cards({ text, concluido, id, setOkComment, removeComment }: CardsProps) {
 
 
     return (
@@ -24,7 +25,7 @@ export default function Cards({ text, concluido, id, setOkComment }: CardsProps)
                 {text}
             </span>
             <span className="cursor-pointer w-1/6 flex justify-center">
-                <Trash size={18} className="text-gray-300" />
+                <Trash size={18} className="text-gray-300" onClick={() => removeComment(id)}  />
             </span>
         </div >
     );
